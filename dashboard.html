@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parroquia Santa Alicia - Aula Virtual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✝️%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra Lateral de Espacios (Izquierda) -->
+        <aside class="spaces-sidebar">
+            <div class="spaces-list">
+                <div class="home-button" title="Inicio">
+                    <div class="home-icon">🏠</div>
+                </div>
+                <div class="spaces-divider"></div>
+                <div class="space-item active" data-space="confirmacion" title="Confirmación">
+                    <div class="space-icon">✝️</div>
+                </div>
+                <div class="space-item" data-space="catequesis" title="Catequesis">
+                    <div class="space-icon">📖</div>
+                </div>
+                <div class="space-item" data-space="coro" title="Coro">
+                    <div class="space-icon">🎵</div>
+                </div>
+                <div class="space-item" data-space="pastoral" title="Pastoral">
+                    <div class="space-icon">❤️</div>
+                </div>
+            </div>
+            <button class="create-space-btn" title="Crear nuevo espacio">
+                <span class="plus-icon">+</span>
+            </button>
+        </aside>
+
+        <!-- Barra Lateral de Canales -->
+        <aside class="channels-sidebar">
+            <header class="space-header">
+                <h2 class="space-name">Confirmación</h2>
+            </header>
+
+            <nav class="channels-list">
+                <div class="channel-category">
+                    <div class="category-header">
+                        <span class="category-arrow">▼</span>
+                        <span class="category-name">Canales de Texto</span>
+                    </div>
+                    <ul class="category-channels">
+                        <li class="channel-item active" data-channel="chat-general" data-type="text">
+                            <span class="channel-hash">#</span>
+                            <span class="channel-name">chat-general</span>
+                        </li>
+                        <li class="channel-item" data-channel="anuncios" data-type="text">
+                            <span class="channel-hash">#</span>
+                            <span class="channel-name">anuncios</span>
+                        </li>
+                        <li class="channel-item" data-channel="recursos" data-type="text">
+                            <span class="channel-hash">#</span>
+                            <span class="channel-name">recursos</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="channel-category">
+                    <div class="category-header">
+                        <span class="category-arrow">▼</span>
+                        <span class="category-name">Canales de Voz</span>
+                    </div>
+                    <ul class="category-channels">
+                        <li class="channel-item" data-channel="reunion-coordinadores" data-type="voice">
+                            <span class="channel-icon">🔊</span>
+                            <span class="channel-name">reunión-coordinadores</span>
+                        </li>
+                        <li class="channel-item" data-channel="reunion-catequistas" data-type="voice">
+                            <span class="channel-icon">🔊</span>
+                            <span class="channel-name">reunión-catequistas</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="channel-category">
+                    <div class="category-header">
+                        <span class="category-arrow">▼</span>
+                        <span class="category-name">Secciones de Tareas</span>
+                    </div>
+                    <ul class="category-channels">
+                        <li class="channel-item" data-channel="entregas-confirmacion" data-type="tasks">
+                            <span class="channel-icon">📝</span>
+                            <span class="channel-name">entregas-confirmación</span>
+                        </li>
+                        <li class="channel-item" data-channel="tareas-catequesis" data-type="tasks">
+                            <span class="channel-icon">📝</span>
+                            <span class="channel-name">tareas-catequesis</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <button class="add-section-btn" title="Añadir sección">
+                <span class="plus-icon">+</span>
+                <span class="btn-text">Añadir Sección</span>
+            </button>
+        </aside>
+
+        <!-- Área de Contenido Principal -->
+        <main class="main-content">
+            <header class="channel-header">
+                <span class="header-hash">#</span>
+                <h1 class="channel-title" id="activeChannelTitle">Inicio</h1>
+            </header>
+
+            <!-- Contenedor de Inicio (Home) -->
+            <div class="home-container hidden">
+                <div class="home-content">
+                    <div class="home-main">
+                        <div class="welcome-section">
+                            <h1 class="welcome-title">¡Hola de nuevo! 👋</h1>
+                            <p class="welcome-subtitle">Bienvenido a la Comunidad en línea de Parroquia Santa Alicia</p>
+                        </div>
+
+                        <div class="quick-access-section">
+                            <h3 class="section-title">📋 Accesos Rápidos</h3>
+                            <div class="quick-access-grid">
+                                <div class="quick-access-card" onclick="navigateToChannel('entregas-confirmacion', 'tasks')">
+                                    <div class="quick-access-icon">📝</div>
+                                    <div class="quick-access-info">
+                                        <h4>Entregas Confirmación</h4>
+                                        <p>2 tareas pendientes</p>
+                                    </div>
+                                </div>
+                                <div class="quick-access-card" onclick="navigateToChannel('tareas-catequesis', 'tasks')">
+                                    <div class="quick-access-icon">📚</div>
+                                    <div class="quick-access-info">
+                                        <h4>Tareas Catequesis</h4>
+                                        <p>1 tarea pendiente</p>
+                                    </div>
+                                </div>
+                                <div class="quick-access-card" onclick="navigateToChannel('chat-general', 'text')">
+                                    <div class="quick-access-icon">💬</div>
+                                    <div class="quick-access-info">
+                                        <h4>Chat General</h4>
+                                        <p>Ver mensajes</p>
+                                    </div>
+                                </div>
+                                <div class="quick-access-card" onclick="navigateToChannel('anuncios', 'text')">
+                                    <div class="quick-access-icon">📢</div>
+                                    <div class="quick-access-info">
+                                        <h4>Anuncios</h4>
+                                        <p>Ver anuncios importantes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pending-tasks-section">
+                            <h3 class="section-title">⏰ Tareas Pendientes</h3>
+                            <div class="pending-tasks-list">
+                                <div class="pending-task-item">
+                                    <div class="task-priority high"></div>
+                                    <div class="task-info">
+                                        <h4>Resumen de lectura - Los Sacramentos</h4>
+                                        <p>📅 Entrega: 25 Jun 2025</p>
+                                    </div>
+                                    <button class="task-action-btn" onclick="navigateToChannel('entregas-confirmacion', 'tasks')">
+                                        Ver
+                                    </button>
+                                </div>
+                                <div class="pending-task-item">
+                                    <div class="task-priority medium"></div>
+                                    <div class="task-info">
+                                        <h4>Cuestionario de Confirmación</h4>
+                                        <p>📅 Entrega: 30 Jun 2025</p>
+                                    </div>
+                                    <button class="task-action-btn" onclick="navigateToChannel('entregas-confirmacion', 'tasks')">
+                                        Ver
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="home-sidebar">
+                        <div class="sidebar-card news-card">
+                            <h3 class="sidebar-card-title">📰 Novedades de la Parroquia</h3>
+                            <div class="news-list">
+                                <div class="news-item">
+                                    <div class="news-date">20 Jun</div>
+                                    <div class="news-content">
+                                        <h4>Inicio de temporada de Confirmaciones</h4>
+                                        <p>Comienza el nuevo ciclo de preparación para Confirmación 2025.</p>
+                                    </div>
+                                </div>
+                                <div class="news-item">
+                                    <div class="news-date">18 Jun</div>
+                                    <div class="news-content">
+                                        <h4>Retiro espiritual</h4>
+                                        <p>Inscripciones abiertas para el retiro de fin de semana.</p>
+                                    </div>
+                                </div>
+                                <div class="news-item">
+                                    <div class="news-date">15 Jun</div>
+                                    <div class="news-content">
+                                        <h4>Nuevos horarios de misa</h4>
+                                        <p>Consultar la sección de anuncios para más información.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-card links-card">
+                            <h3 class="sidebar-card-title">🔗 Enlaces Útiles</h3>
+                            <div class="links-list">
+                                <a href="#" class="link-item">
+                                    <span class="link-icon">📖</span>
+                                    <span>Lecturas del día</span>
+                                </a>
+                                <a href="#" class="link-item">
+                                    <span class="link-icon">🎵</span>
+                                    <span>Coral Parroquial</span>
+                                </a>
+                                <a href="#" class="link-item">
+                                    <span class="link-icon">❤️</span>
+                                    <span>Pastoral Social</span>
+                                </a>
+                                <a href="#" class="link-item">
+                                    <span class="link-icon">📞</span>
+                                    <span>Contacto</span>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <div class="chat-area hidden">
+                <div class="messages-container">
+                    <div class="message">
+                        <div class="message-avatar">👤</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-author">Coordinador</span>
+                                <span class="message-time">Hoy a las 10:30</span>
+                            </div>
+                            <div class="message-text">
+                                ¡Bienvenidos al espacio de Confirmación! Aquí compartiremos anuncios importantes y materiales de estudio.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message">
+                        <div class="message-avatar">👤</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-author">Catequista María</span>
+                                <span class="message-time">Hoy a las 11:15</span>
+                            </div>
+                            <div class="message-text">
+                                Recuerden que la próxima sesión será el sábado. Por favor revisen los materiales en la sección de recursos.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message">
+                        <div class="message-avatar">👤</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-author">Sistema</span>
+                                <span class="message-time">Hoy a las 09:00</span>
+                            </div>
+                            <div class="message-text">
+                                📢 <strong>Recordatorio:</strong> Fecha límite de entregas: 30 de junio.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-input-area">
+                    <button class="attach-btn" title="Adjuntar archivo">
+                        <span class="attach-icon">+</span>
+                    </button>
+                    <input 
+                        type="text" 
+                        class="message-input" 
+                        placeholder="Mensaje #chat-general" 
+                        id="messageInput"
+                    >
+                    <button class="send-btn" title="Enviar mensaje">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/classroom.js"></script>
+</body>
+</html>
